@@ -86,24 +86,21 @@ router.post('/login', function(req, res, next)
                     {
                         console.log("5");
                         res.json("hacked");
-                        res.sendStatus(200);
                     }
                     else
                     {
                         console.log("6");
                         res.json("success");
-                        res.sendStatus(200);
                     }
                 }
                 else
                 {
                     console.log("7");
                     res.json("failure");
-                    res.sendStatus(200);
-                }
             }
-
+            res.sendStatus(200);
         });
+        
 });
 
 router.post('/tryHack', function(req, res, next)
