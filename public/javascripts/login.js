@@ -10,8 +10,19 @@ $(document).ready(function() {
         }
         else {
             var someJSON = "{username :" + username + " password : " + password + "}";
-            $.post("/login", someJSON, function(success) {
+            $.post("/login", someJSON, function(data) {
                 console.log("successfully sent data");
+                console.log(data);
+                if (data == "success"){
+                    //print welcome
+                    
+                }
+                else if (data == "hacked"){
+                    //print your account has been compromised
+                }
+                else if (data == "failure"){
+                    
+                }
             });
         }
     });
