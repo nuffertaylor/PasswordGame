@@ -42,7 +42,6 @@ router.post('/register', function(req, res, next)
                 {
                     console.log("username taken");
                     res.json("failure");
-                    res.sendStatus(200);
                 }
                 else
                 {
@@ -58,7 +57,6 @@ router.post('/register', function(req, res, next)
                         if (err) return console.error(err);
                         console.log(post);
                         res.json("success");
-                        res.sendStatus(200);
                     });
                 }
             }
@@ -99,8 +97,6 @@ router.post('/login', function(req, res, next)
                     res.json("failure");
                 }
             }
-
-            
         });
 });
 
@@ -143,12 +139,10 @@ router.post('/tryHack', function(req, res, next)
                             wrong: wrong
                         });
                     }
-                    res.sendStatus(200);
                 }
                 else
                 {
                     res.json("failed to find");
-                    res.sendStatus(200);
                 }
             }
 
