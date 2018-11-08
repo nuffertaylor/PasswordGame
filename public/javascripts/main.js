@@ -1,26 +1,114 @@
 $(document).ready(function() {
+    $("#registration").hide();
+    $("#loggingIn").hide();
 
-    /*$("#createUser").click(function() {
-        $("#mainPage").empty();
+    $("#createUser").click(function() {
+        $("#homePage").hide();
+        $("#registration").show();
     });
 
     $("#logIn").click(function() {
-        console.log("i am clicked");
-        $("#mainPage").empty();
-        var html = '<div class="form-group"> <form id="commentForm" action="">' +
-            '<label for="name">Username: </label><br><input type="text" id="user" placeholder="username">' +
-            '</div><div class="form-group"> <label for="comment">Password: </label><br>' +
-            '<input type="password" id="pass" placeholder="password"> </form></div>' +
-            '<button class = "btn btn-primary" id = "submitLogIn">Log In</button>' +
-            '<button class="btn btn-secondary" id ="returnHome">Return</button>';
-        $('#mainPage').append(html);
+        $("#homePage").hide();
+        $("#loggingIn").show();
+
     });
 
-    $("#returnHome").click(function() {
-        console.log("anybody there?");
-        $("#mainPage").empty();
-        var homeHTML = '<h2>Hackerman</h2><button id = "createUser" class="btn btn-secondary">Create User</button>' +
-            '<button id = "logIn" class="btn btn-info">Log In</button>';
-        $('#mainPage').append(homeHTML);
-    });*/
+    $(".returnHome").click(function() {
+        $("#registration").hide();
+        $("#loggingIn").hide();
+        $("#homePage").show();
+    });
+    
+    $("#submitLogIn").click(function()
+    {
+        $("#failure").empty();
+        var username = $(".user").val();
+        var password = $(".pass").val();
+        if (!username)
+        {
+            alert("You're missing a username!");
+        }
+        else if (!password)
+        {
+            alert("You're missing a password!");
+        }
+        else
+        {
+            var someJSON = new Object();
+            someJSON.username = username;
+            someJSON.password = password;
+            console.log(someJSON);
+            var sendJSON = JSON.stringify(someJSON);
+            console.log(sendJSON);
+            $.ajax(
+            {
+                url: "/login",
+                type: "POST",
+                data: sendJSON,
+                contentType: "application/json; charset=utf-8",
+                success: function(data)
+                {
+                    console.log("successfully sent data");
+                    console.log(data);
+                    if (data == "success")
+                    {
+                        //print welcome
+                    }
+                    else if (data == "hacked")
+                    {
+                        //print your account has been compromised
+                    }
+                    else if (data == "failure")
+                    {
+                        $("#failure").html("Username or Password is Incorrect");
+                        var username = $("#user").val("");
+                        var password = $("#pass").val("");
+                    }
+                }
+            });
+        }
+    });
+
+    $("#registerUser").click(function()
+    {
+        var username = $(".user").val();
+        var password = $(".pass").val();
+        if (!username)
+        {
+            alert("You're missing a username!");
+        }
+        else if (!password)
+        {
+            alert("You're missing a password!");
+        }
+        else
+        {
+            var someJSON = new Object();
+            someJSON.username = username;
+            someJSON.password = password;
+            console.log(someJSON);
+            var sendJSON = JSON.stringify(someJSON);
+            console.log(sendJSON);
+
+            $.ajax(
+            {
+                url: "/register",
+                type: "POST",
+                data: sendJSON,
+                contentType: "application/json; charset=utf-8",
+                success: function(data)
+                {
+                    console.log("successfully sent data");
+                    if (data == "success")
+                    {
+                        alert("congrats, you're registered " + username);
+                    }
+                    else if (data == "failure")
+                    {
+                        alert("sorry, that username is taken.");
+                    }
+                }
+            });
+        }
+    });
 });

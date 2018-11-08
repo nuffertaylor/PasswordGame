@@ -3,15 +3,44 @@
 <html>
 <header>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src = "javascripts/main.js"></script>
+    <script src="javascripts/main.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </header>
 
 <body>
-    <div id="mainPage">
+    <div id="homePage">
         <h2>Hackerman</h2>
-        <a href = "register.html"><button id = "createUser" class="btn btn-secondary">Create User</button></a>
-        <a href = "login.html"><button id = "logIn" class="btn btn-info">Log In</button></a>
+        <button id="createUser" class="btn btn-secondary">Create User</button>
+        <button id="logIn" class="btn btn-info">Log In</button>
+    </div>
+    <div id="registration">
+        <h2>Register a New User</h2>
+        <div class="form-group">
+            <form action="">
+                <label for="name">Username: </label><br>
+                <input type="text" class="user" placeholder="username"></form>
+        </div>
+        <div class="form-group">
+            <label for="comment">Password: </label><br>
+            <input type="password" class="pass" placeholder="password">
+        </div>
+        <button class="btn btn-primary" id="registerUser">Create New User</button>
+        <button class="btn btn-secondary returnHome">Return</button>
+    </div>
+    <div id="loggingIn">
+        <h2>Log In</h2>
+        <div class="form-group">
+            <form action="">
+                <label for="name">Username: </label><br>
+                <input type="text" class="user" placeholder="username"></form>
+        </div>
+        <div class="form-group">
+            <label for="comment">Password: </label><br>
+            <input type="password" class="pass" placeholder="password">
+        </div>
+        <button class="btn btn-primary" id="submitLogIn">Log In</button>
+        <button class="btn btn-secondary returnHome">Return</button>
+        <p id="failure" style="color:red;font-style: italic;"></p>
     </div>
 </body>
 

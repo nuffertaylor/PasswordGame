@@ -2,6 +2,7 @@ $(document).ready(function()
 {
     $("#submitLogIn").click(function()
     {
+        $("#failure").empty();
         var username = $("#user").val();
         var password = $("#pass").val();
         if (!username)
@@ -33,7 +34,6 @@ $(document).ready(function()
                     if (data == "success")
                     {
                         //print welcome
-
                     }
                     else if (data == "hacked")
                     {
@@ -41,7 +41,9 @@ $(document).ready(function()
                     }
                     else if (data == "failure")
                     {
-
+                        $("#failure").html("Username or Password is Incorrect");
+                        var username = $("#user").val("");
+                        var password = $("#pass").val("");
                     }
                 }
             });
