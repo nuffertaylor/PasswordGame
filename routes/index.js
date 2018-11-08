@@ -100,7 +100,7 @@ router.post('/login', function(req, res, next)
                 }
             }
 
-            res.sendStatus(200);
+            
         });
 });
 
