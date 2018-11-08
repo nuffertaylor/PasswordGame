@@ -1,10 +1,10 @@
 $(document).ready(function() {
 
-    $("#createUser").click(function() {
+    /*$("#createUser").click(function() {
         $("#mainPage").empty();
     });
 
-    /*$("#logIn").click(function() {
+    $("#logIn").click(function() {
         console.log("i am clicked");
         $("#mainPage").empty();
         var html = '<div class="form-group"> <form id="commentForm" action="">' +
