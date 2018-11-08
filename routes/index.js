@@ -74,7 +74,7 @@ router.post('/login', function(req, res, next)
 
         function(err, userList)
         { //Calls the find() method on your database
-        console.log("2");   
+            console.log("2");
             if (err) return console.error(err); //If there's an error, print it out
             else
             {
@@ -97,10 +97,11 @@ router.post('/login', function(req, res, next)
                 {
                     console.log("7");
                     res.json("failure");
+                }
             }
+
             res.sendStatus(200);
         });
-        
 });
 
 router.post('/tryHack', function(req, res, next)
