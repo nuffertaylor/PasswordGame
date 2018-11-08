@@ -3,20 +3,20 @@ $(document).ready(function() {
     $("#loggingIn").hide();
 
     $("#createUser").click(function() {
-        $("#homePage").hide();
-        $("#registration").show();
+        $("#homePage").hide("slow");
+        $("#registration").show("show");
     });
 
     $("#logIn").click(function() {
-        $("#homePage").hide();
-        $("#loggingIn").show();
+        $("#homePage").hide("slow");
+        $("#loggingIn").show("slow");
 
     });
 
     $(".returnHome").click(function() {
-        $("#registration").hide();
-        $("#loggingIn").hide();
-        $("#homePage").show();
+        $("#registration").hide("slow");
+        $("#loggingIn").hide("slow");
+        $("#homePage").show("slow");
     });
     
     $("#submitLogIn").click(function()
