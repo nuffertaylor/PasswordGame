@@ -1,6 +1,4 @@
 $(document).ready(function() {
-    $("#registration").hide();
-    $("#loggingIn").hide();
 
     $("#createUser").click(function() {
         $("#homePage").hide("slow");
@@ -18,48 +16,45 @@ $(document).ready(function() {
         $("#loggingIn").hide("slow");
         $("#homePage").show("slow");
     });
-    
-    $("#submitLogIn").click(function()
-    {
+
+    $("#submitLogIn").click(function() {
         $("#failure").empty();
-        var username = $(".user").val();
-        var password = $(".pass").val();
-        if (!username)
-        {
+        var username = $("#user1").val();
+        var welcomeMsg = "<h3>Welcome " + username + "</h3>";
+        var hackedMsg = "<h3>The account " + username + " has been compromised.</h3>";
+        var password = $("#pass1").val();
+        if (!username) {
             alert("You're missing a username!");
         }
-        else if (!password)
-        {
+        else if (!password) {
             alert("You're missing a password!");
         }
-        else
-        {
+        else {
             var someJSON = new Object();
             someJSON.username = username;
             someJSON.password = password;
             console.log(someJSON);
             var sendJSON = JSON.stringify(someJSON);
             console.log(sendJSON);
-            $.ajax(
-            {
+            $.ajax({
                 url: "/login",
                 type: "POST",
                 data: sendJSON,
                 contentType: "application/json; charset=utf-8",
-                success: function(data)
-                {
+                success: function(data) {
                     console.log("successfully sent data");
                     console.log(data);
-                    if (data == "success")
-                    {
-                        //print welcome
+                    if (data == "success") {
+                        $("#welcome").append(welcomeMsg);
+                        $("#loggingIn").hide("slow");
+                        $("#welcome").show("slow");
                     }
-                    else if (data == "hacked")
-                    {
-                        //print your account has been compromised
+                    else if (data == "hacked") {
+                        $("#welcome").append(hackedMsg);
+                        $("#loggingIn").hide("slow");
+                        $("#welcome").show("slow");
                     }
-                    else if (data == "failure")
-                    {
+                    else if (data == "failure") {
                         $("#failure").html("Username or Password is Incorrect");
                         var username = $("#user").val("");
                         var password = $("#pass").val("");
@@ -69,20 +64,16 @@ $(document).ready(function() {
         }
     });
 
-    $("#registerUser").click(function()
-    {
-        var username = $(".user").val();
-        var password = $(".pass").val();
-        if (!username)
-        {
+    $("#registerUser").click(function() {
+        var username = $("#user").val();
+        var password = $("#pass").val();
+        if (!username) {
             alert("You're missing a username!");
         }
-        else if (!password)
-        {
+        else if (!password) {
             alert("You're missing a password!");
         }
-        else
-        {
+        else {
             var someJSON = new Object();
             someJSON.username = username;
             someJSON.password = password;
@@ -90,21 +81,17 @@ $(document).ready(function() {
             var sendJSON = JSON.stringify(someJSON);
             console.log(sendJSON);
 
-            $.ajax(
-            {
+            $.ajax({
                 url: "/register",
                 type: "POST",
                 data: sendJSON,
                 contentType: "application/json; charset=utf-8",
-                success: function(data)
-                {
+                success: function(data) {
                     console.log("successfully sent data");
-                    if (data == "success")
-                    {
+                    if (data == "success") {
                         alert("congrats, you're registered " + username);
                     }
-                    else if (data == "failure")
-                    {
+                    else if (data == "failure") {
                         alert("sorry, that username is taken.");
                     }
                 }

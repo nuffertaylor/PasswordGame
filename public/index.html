@@ -13,34 +13,36 @@
         <button id="createUser" class="btn btn-secondary">Create User</button>
         <button id="logIn" class="btn btn-info">Log In</button>
     </div>
-    <div id="registration">
+    <div id="registration" style="display : none;">
         <h2>Register a New User</h2>
         <div class="form-group">
             <form action="">
                 <label for="name">Username: </label><br>
-                <input type="text" class="user" placeholder="username"></form>
+                <input type="text" id="user" placeholder="username"></form>
         </div>
         <div class="form-group">
             <label for="comment">Password: </label><br>
-            <input type="password" class="pass" placeholder="password">
+            <input type="password" id="pass" placeholder="password">
         </div>
         <button class="btn btn-primary" id="registerUser">Create New User</button>
         <button class="btn btn-secondary returnHome">Return</button>
     </div>
-    <div id="loggingIn">
+    <div id="loggingIn" style="display : none;">
         <h2>Log In</h2>
         <div class="form-group">
             <form action="">
                 <label for="name">Username: </label><br>
-                <input type="text" class="user" placeholder="username"></form>
+                <input type="text" id="user1" placeholder="username"></form>
         </div>
         <div class="form-group">
             <label for="comment">Password: </label><br>
-            <input type="password" class="pass" placeholder="password">
+            <input type="password" id="pass1" placeholder="password">
         </div>
         <button class="btn btn-primary" id="submitLogIn">Log In</button>
         <button class="btn btn-secondary returnHome">Return</button>
         <p id="failure" style="color:red;font-style: italic;"></p>
+    </div>
+    <div id="welcome" style="display : none;">
     </div>
 </body>
 
