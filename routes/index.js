@@ -69,28 +69,35 @@ router.post('/register', function(req, res, next)
 
 router.post('/login', function(req, res, next)
 {
+    console.log("1");
     User.find({ username: req.username, password: req.password },
 
         function(err, userList)
         { //Calls the find() method on your database
+        console.log("2");   
             if (err) return console.error(err); //If there's an error, print it out
             else
             {
+                console.log("3");
                 if (userList.length)
                 {
+                    console.log("4");
                     if (userList[0].hacked == true)
                     {
+                        console.log("5");
                         res.json("hacked");
                         res.sendStatus(200);
                     }
                     else
                     {
+                        console.log("6");
                         res.json("success");
                         res.sendStatus(200);
                     }
                 }
                 else
                 {
+                    console.log("7");
                     res.json("failure");
                     res.sendStatus(200);
                 }
