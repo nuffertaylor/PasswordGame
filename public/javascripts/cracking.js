@@ -33,8 +33,14 @@ $(document).ready(function() {
     });
 
     $("#submitPassword").click(function() {
-        var user = $("#whoYoureAttacking").html();
         var pass = $("#passwordGuess").val();
+        if (!pass) {
+            //$("#wronginputText").empty();
+            console.log("password is empty");
+            $("#wronginputText").append("no password input");
+            return;
+        }
+        var user = $("#whoYoureAttacking").html();
         var someJSON = new Object();
         someJSON.username = user;
         someJSON.password = pass;
@@ -50,7 +56,9 @@ $(document).ready(function() {
 
                 }
                 else if (data.status == "wrong length") {
-                    alert("not the right length buddy");
+                    //$("#wronginputText").empty();
+                    console.log("password length is wrong");
+                    $("#wronginputText").html("password is not the right length");
                 }
                 else {
                     $("#guessResponse").empty();
