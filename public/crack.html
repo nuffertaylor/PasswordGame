@@ -12,10 +12,17 @@
         <ul class="nav nav-pills nav-stacked scrollbar" id="listOfUsers"></ul>
     </div>
 
-    <div class="form-group" style="display : none;">
-        <form action="">
-            <label for="name">Password: </label><br>
-            <input type="text" id="user1" placeholder="password"></form>
+    <div style="display : none;" id = "guessContainer">
+        <nobr><h3>You are hacking </h3>
+        <h3 id = "whoYoureAttacking"></h3></nobr>
+        <div id="guessForm" class="form-group">
+            <form action="">
+                <label for="name">Password: </label><br>
+                <input type="text" id="user1" placeholder="password">
+            </form>
+        </div>
+        <div id = "guessResponse"></div>
+        <div id = "responseKey"></div>
     </div>
 </body>
 
