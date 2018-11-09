@@ -35,7 +35,7 @@ $(document).ready(function() {
     $("#submitPassword").click(function() {
         var pass = $("#passwordGuess").val();
         if (!pass) {
-            //$("#wronginputText").empty();
+            $("#wronginputText").empty();
             console.log("password is empty");
             $("#wronginputText").append("no password input");
             return;
@@ -56,7 +56,7 @@ $(document).ready(function() {
 
                 }
                 else if (data.status == "wrong length") {
-                    //$("#wronginputText").empty();
+                    $("#wronginputText").empty();
                     console.log("password length is wrong");
                     $("#wronginputText").html("password is not the right length");
                 }

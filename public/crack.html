@@ -13,21 +13,27 @@
         <ul class="nav nav-pills nav-stacked scrollbar" id="listOfUsers"></ul>
     </div>
 
-    <div style="display : none;" id = "guessContainer">
-        <nobr><h3>You are hacking </h3>
-        <h3 id = "whoYoureAttacking"></h3></nobr>
+    <div style="display : none;" id="guessContainer">
+        <nobr>
+            <h3>You are hacking </h3>
+            <h3 id="whoYoureAttacking"></h3>
+        </nobr>
         <div id="guessForm" class="form-group">
             <form action="">
                 <label for="name">Password: </label><br>
                 <input type="text" id="passwordGuess" placeholder="password">
+                <p style="color:red" id="wronginputText"></p>
             </form>
-            <button id="submitPassword" class = "btn btn-primary">Submit</button>
+            <button id="submitPassword" class="btn btn-primary">Submit</button>
         </div>
-        <div id = "guessResponse"></div>
-        <div id = "responseKey">
-            <br><i class="far fa-circle"></i><p>unidentified character</p><br>
-            <i class="fas fa-circle" style="color:red"></i><p>correct character</p><br>
-            <i class="fas fa-circle" style="color:green"></i><p>correct character and correct location</p><br>
+        <div id="guessResponse"></div>
+        <div id="responseKey">
+            <br><i class="far fa-circle"></i>
+            <p>unidentified character</p><br>
+            <i class="fas fa-circle" style="color:red"></i>
+            <p>correct character</p><br>
+            <i class="fas fa-circle" style="color:green"></i>
+            <p>correct character and correct location</p><br>
         </div>
     </div>
 </body>
