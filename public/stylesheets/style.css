@@ -6,3 +6,13 @@ body {
 a {
   color: #00B7FF;
 }
+
+.scrollbar {
+  width: 150px;
+  overflow-x: scroll;
+}
+
+#userScroll {
+
+  outline: #D3D3D3 solid 10px;
+}

@@ -147,4 +147,15 @@ router.post('/tryHack', function(req, res, next)
         });
 });
 
+//returns a list of only usernames
+router.get('/userList', function(req, res, next){
+        User.find({}, function(err, userList) {
+            var allUsers = [];
+            for (var i = 0; i < userList.length; i++){
+                allUsers.push(userList[i].username);
+            }
+            res.json(allUsers);
+        });
+});
+
 module.exports = router;

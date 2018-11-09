@@ -1,3 +1,5 @@
+//not being used currently
+
 $(document).ready(function()
 {
     $("#submitLogIn").click(function()

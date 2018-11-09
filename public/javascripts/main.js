@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+//transitions between the three main pages
     $("#createUser").click(function() {
         $("#homePage").hide("slow");
         $("#registration").show("show");
@@ -16,7 +17,9 @@ $(document).ready(function() {
         $("#loggingIn").hide("slow");
         $("#homePage").show("slow");
     });
-
+    
+    
+//Login
     $("#submitLogIn").click(function() {
         $("#failure").empty();
         var username = $("#user1").val();
@@ -48,6 +51,7 @@ $(document).ready(function() {
                         $("#welcome").append(welcomeMsg);
                         $("#loggingIn").hide("slow");
                         $("#welcome").show("slow");
+                        $("#hackTime").load("crack.html")
                     }
                     else if (data == "hacked") {
                         $("#welcome").append(hackedMsg);
@@ -64,6 +68,7 @@ $(document).ready(function() {
         }
     });
 
+//registration
     $("#registerUser").click(function() {
         var username = $("#user").val();
         var password = $("#pass").val();
