@@ -1,4 +1,5 @@
 function userToHack(user) {
+    $("#welcome").hide("slow");
     $("#guessResponse").empty();
     $("#guessContainer").show("slow");
     //$("#whoYoureAttacking").hide("slow");
@@ -23,12 +24,24 @@ function userToHack(user) {
     });
 }
 
+function userHacked(user) {
+    $("#hackedUserInfo").empty();
+    $("#hackedUserInfo").append("<h4>The account " + user + " has already been compromised.</h4>" +
+        "<h5>Before they were compromised, they cracked [insert number here] accounts.</h5>");
+}
+
 $(document).ready(function() {
 
     $.getJSON("/userList", function(data) {
         for (var i = 1; i < data.length; i++) {
-            var html = '<li class="nav-item" onclick = "userToHack(\'' + data[i] + '\')">' + data[i] + '</li>';
-            $("#listOfUsers").append(html);
+            if (data.hacked) {
+                var hackedUser = '<li class="nav-item" onclick = "userHacked(\'' + data[i].username + '\')><s style="color:red">' + data[i].username + '</s></li>'
+                $("#listOfUsers").append(html);
+            }
+            else {
+                var html = '<li class="nav-item" onclick = "userToHack(\'' + data[i].username + '\')">' + data[i].username + '</li>';
+                $("#listOfUsers").append(html);
+            }
         }
     });
 
@@ -53,7 +66,7 @@ $(document).ready(function() {
             success: function(data) {
                 console.log(data);
                 if (data.status == "success") {
-
+                    console.log("you guessed the password, nice");
                 }
                 else if (data.status == "wrong length") {
                     $("#wronginputText").empty();
@@ -62,16 +75,16 @@ $(document).ready(function() {
                 }
                 else {
                     $("#guessResponse").empty();
-                    for (var i = 0; i < data.wrong; i++) {
-                        var html = '<i class="far fa-circle"></i>';
+                    for (var i = 0; i < data.right; i++) {
+                        var html = '<i class="fas fa-circle" style="color:green">';
                         $("#guessResponse").append(html);
                     }
                     for (var i = 0; i < data.partial; i++) {
                         var html = '<i class="fas fa-circle" style="color:red">';
                         $("#guessResponse").append(html);
                     }
-                    for (var i = 0; i < data.right; i++) {
-                        var html = '<i class="fas fa-circle" style="color:green">';
+                    for (var i = 0; i < data.wrong; i++) {
+                        var html = '<i class="far fa-circle"></i>';
                         $("#guessResponse").append(html);
                     }
                 }
