@@ -7,6 +7,50 @@ a {
   color: #00B7FF;
 }
 
+@font-face {
+  font-family: streamster;
+  src: url('../fonts/Streamster.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: vcr;
+  src: url('../fonts/VCR.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: encounter;
+  src: url('../fonts/encounter.ttf') format('truetype');
+}
+
+.title {
+  font-family: streamster;
+  color: purple;
+}
+
+.info {
+  font-family : encounter;
+  color : #990095;
+}
+
+.purpleButton {
+  background-color: #F103DE;
+  color: white;
+  font-family: vcr;
+}
+
+.purpleButton:hover {
+  background-color: #BF05B3;
+}
+
+.returnButton {
+  background-color: #371759;
+  color : white;
+  font-family: vcr;
+}
+.returnButton:hover{
+  background-color: #58258e;
+}
+
 .scrollbar {
   width: 150px;
   overflow-x: scroll;
