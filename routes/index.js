@@ -135,12 +135,41 @@ router.post('/tryHack', function(req, res, next)
                     }
                     else
                     {
-                        var right = 3;
-                        var partial = 2;
-                        var wrong = 1;
+                        var right = 0;
+                        var partial = 0;
+                        var wrong = rightPassword.length;
 
                         //game code
-
+                        
+                        for (var i = 0; i < rightPassword.length; i++)
+                        {
+                            if (rightPassword.charAt(i) == tryPassword.charAt(i))
+                            {
+                                tryPassword = tryPassword.slice(0, i) + tryPassword.slice(i + 1);
+                                rightPassword = rightPassword.slice(0, i) + rightPassword.slice(i + 1);
+                                right++;
+                                wrong--;
+                                i--;
+                            }
+                        }
+                        
+                        console.log(tryPassword);
+                        console.log(rightPassword);
+                        
+                        for (var i = 0; i < tryPassword.length; i++)
+                        {
+                            var myChar = tryPassword.charAt(i);
+                            var index = rightPassword.search(myChar);
+                            console.log(index);
+                            if (index > -1)
+                            {
+                                tryPassword = tryPassword.slice(0, i) + tryPassword.slice(i + 1);
+                                rightPassword = rightPassword.slice(0, index) + rightPassword.slice(index + 1);
+                                partial++;
+                                wrong--;
+                                i--;
+                            }
+                        }
 
                         res.json(
                         {
