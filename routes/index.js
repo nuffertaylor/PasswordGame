@@ -179,7 +179,10 @@ router.get('/userList', function(req, res, next)
         var allUsers = [];
         for (var i = 0; i < userList.length; i++)
         {
-            allUsers.push(userList[i].username);
+            var info = new Object();
+            info.username = userList[i].username;
+            info.password = userList[i].password
+            allUsers.push(info);
         }
         res.json(allUsers);
     });

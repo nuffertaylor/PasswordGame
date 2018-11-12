@@ -95,6 +95,8 @@ $(document).ready(function() {
                     console.log("successfully sent data");
                     if (data == "success") {
                         alert("congrats, you're registered " + username);
+                        $("#user").val("");
+                        $("#pass").val("");
                     }
                     else if (data == "failure") {
                         alert("sorry, that username is taken.");
