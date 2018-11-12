@@ -100,6 +100,15 @@ router.post('/login', function(req, res, next)
 
 router.post('/tryHack', function(req, res, next)
 {
+    //TODO add users username to check if they are hacked
+    //  If hacked, do the account compromised popup and redirect to main screen
+    //
+    //TODO also use username to increment hack count on success
+    //
+    //TODO add leaderboard for amount hacked and hacked status somewhere (main page?)
+    //
+    
+    
     User.find({ username: req.body.username },
         function(err, userList)
         { //Calls the find() method on your database
