@@ -125,7 +125,8 @@ router.post('/tryHack', function(req, res, next)
                     {
                         res.json(
                         {
-                            status: "wrong length"
+                            status: "wrong length",
+                            l : rightPassword.length
                         });
                     }
                     else if (tryPassword == rightPassword)
@@ -186,7 +187,7 @@ router.post('/tryHack', function(req, res, next)
                             status: "wrong",
                             right: right,
                             partial: partial,
-                            wrong: wrong
+                            wrong: wrong,
                         });
                     }
                 }
