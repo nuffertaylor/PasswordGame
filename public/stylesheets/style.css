@@ -1,4 +1,10 @@
+/*change everything*/
+
 body {
+  background-image: url("https://i.pinimg.com/originals/8b/6a/51/8b6a51fa1063895d555d28a4c3e17a33.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -52,9 +58,7 @@ a {
   background-color: #58258e;
 }
 
-.scrollbar {
-
-}
+.scrollbar {}
 
 #userScroll {
   width: 400px;

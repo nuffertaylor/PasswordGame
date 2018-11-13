@@ -1,3 +1,6 @@
+//sort userlist by number of people hacked
+//label the table
+
 function userToHack(user) {
     $("#welcome").hide("slow");
     $("#hackedUserInfo").hide("slow");
@@ -54,16 +57,15 @@ function loadBox() {
     $.getJSON("/userList", function(data) {
         for (var i = 1; i < data.length; i++) {
             if (data[i].hacked) {
-                var html = '<li style="text-decoration: line-through; color:red;" onclick = "userHacked(\'' + data[i].username + '\')">' + data[i].username + '</li>';
-                // just remove 'class="nav-item"'
+                var html = '<li style="text-decoration: line-through; color:red;" onclick = "userHacked(\'' + data[i].username + '\')">' + data[i].username + '.....' + data[i].usersHacked + '</li>';
 
                 $("#listOfUsers").append(html);
             }
             //check so the user can't hack himself
-            else if (data[i].username == $("#whoYoureAttacking").val()) { console.log("this is the user who's hacking") }
+            else if (data[i].username == getCookie("username")) { console.log("this is the user who's hacking") }
 
             else {
-                var html = '<li onclick = "userToHack(\'' + data[i].username + '\')">' + data[i].username + '</li>';
+                var html = '<li onclick = "userToHack(\'' + data[i].username + '\')">' + data[i].username + '.....' + data[i].usersHacked + '</li>';
                 $("#listOfUsers").append(html);
             }
         }

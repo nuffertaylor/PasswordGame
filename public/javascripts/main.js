@@ -1,3 +1,6 @@
+//numeric passwords only
+//change to "PIN"
+
 $(document).on("click", ".returnHome", function() {
     $("#registration").hide("slow");
     $("#loggingIn").hide("slow");
