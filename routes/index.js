@@ -137,6 +137,7 @@ router.post('/tryHack', function(req, res, next)
             }
         }
     );
+    
     if (hackOn)
     {
         User.find({ username: req.body.username },
