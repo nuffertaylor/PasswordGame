@@ -191,7 +191,6 @@ router.post('/tryHack', function(req, res, next)
                                     i--;
                                 }
                             }
-
                             console.log(tryPassword);
                             console.log(rightPassword);
 

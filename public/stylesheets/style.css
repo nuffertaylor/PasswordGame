@@ -28,8 +28,8 @@ a {
 }
 
 .info {
-  font-family : encounter;
-  color : #990095;
+  font-family: encounter;
+  color: #990095;
 }
 
 .purpleButton {
@@ -44,19 +44,23 @@ a {
 
 .returnButton {
   background-color: #371759;
-  color : white;
+  color: white;
   font-family: vcr;
 }
-.returnButton:hover{
+
+.returnButton:hover {
   background-color: #58258e;
 }
 
-/*.scrollbar {
-  width: 150px;
-  overflow-x: scroll;
-}*/
+.scrollbar {
+
+}
 
 #userScroll {
-
+  width: 400px;
+  height: 150px;
+  line-height: 3em;
+  overflow: scroll;
+  padding: 5px;
   outline: #D3D3D3 solid 10px;
 }

@@ -1,5 +1,6 @@
 function userToHack(user) {
     $("#welcome").hide("slow");
+    $("#hackedUserInfo").hide("slow");
     $("#guessResponse").empty();
     $("#guessContainer").show("slow");
     //$("#whoYoureAttacking").hide("slow");
@@ -26,8 +27,10 @@ function userToHack(user) {
 
 function userHacked(user) {
     $("#hackedUserInfo").empty();
+    $("#guessContainer").hide("slow");
+    $("#hackedUserInfo").show("slow");
     $("#hackedUserInfo").append("<h4>The account " + user + " has already been compromised.</h4>" +
-        "<h5><i>Before you were compromised, they cracked [insert number here] accounts.</i></h5>");
+        "<h5><i>Before they were compromised, they cracked [insert number here] accounts.</i></h5>");
 }
 
 $(document).ready(function() {
@@ -35,20 +38,56 @@ $(document).ready(function() {
     $.getJSON("/userList", function(data) {
         for (var i = 1; i < data.length; i++) {
             if (data[i].hacked) {
-                var html = '<s style="color:red"><li class="nav-item" onclick = "userHacked(\'' + data[i].username + '\'")>' + data[i].username + '</li></s>';
+                var html = '<li style="text-decoration: line-through; color:red;" onclick = "userHacked(\'' + data[i].username + '\')">' + data[i].username + '</li>';
+                // just remove 'class="nav-item"'
+
                 $("#listOfUsers").append(html);
             }
             //check so the user can't hack himself
             else if (data[i].username == $("#whoYoureAttacking").val()) { console.log("this is the user who's hacking") }
 
             else {
-                var html = '<li class="nav-item" onclick = "userToHack(\'' + data[i].username + '\')">' + data[i].username + '</li>';
+                var html = '<li onclick = "userToHack(\'' + data[i].username + '\')">' + data[i].username + '</li>';
                 $("#listOfUsers").append(html);
+            }
+        }
+
+        //this piece of code alphabetizes the list
+
+        var list, i, switching, b, shouldSwitch;
+        list = document.getElementById("listOfUsers");
+        switching = true;
+        /*Make a loop that will continue until
+        no switching has been done:*/
+        while (switching) {
+            //start by saying: no switching is done:
+            switching = false;
+            b = list.getElementsByTagName("LI");
+            //Loop through all list-items:
+            for (i = 0; i < (b.length - 1); i++) {
+                //start by saying there should be no switching:
+                shouldSwitch = false;
+                /*check if the next item should
+                switch place with the current item:*/
+                if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
+                    /*if next item is alphabetically
+                    lower than current item, mark as a switch
+                    and break the loop:*/
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+            if (shouldSwitch) {
+                /*If a switch has been marked, make the switch
+                and mark the switch as done:*/
+                b[i].parentNode.insertBefore(b[i + 1], b[i]);
+                switching = true;
             }
         }
     });
 
     $("#submitPassword").on("click", function() {
+        $("#hackedUserInfo").empty();
         $("#wronginputText").empty();
         var pass = $("#passwordGuess").val();
         if (!pass) {
@@ -80,7 +119,9 @@ $(document).ready(function() {
                 else if (data.status == "wrong length") {
                     $("#wronginputText").empty();
                     console.log("password length is wrong");
-                    $("#wronginputText").html("password is not the right length");
+                    console.log(data);
+                    $("#wronginputText").html("password is not the right length (should be " + data.l + " characters)");
+                    
                 }
                 else {
                     $("#guessResponse").empty();
