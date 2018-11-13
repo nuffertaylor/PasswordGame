@@ -132,12 +132,13 @@ router.post('/tryHack', function(req, res, next)
                     {
                         User.updateOne({ username: req.body.username }, { $set: { hacked: true } }, function(err)
                         {
+                            var right = rightPassword.length;
                             if (err) return console.error(err); //If there's an error, print it out
                             else
                             {
                                 res.json(
                                 {
-                                    status: "success"
+                                    status: "success",
                                 });
                             }
                         });
@@ -219,7 +220,7 @@ router.get('/userList', function(req, res, next)
         {
             var info = new Object();
             info.username = userList[i].username;
-            info.password = userList[i].password
+            info.hacked = userList[i].hacked;
             allUsers.push(info);
         }
         res.json(allUsers);

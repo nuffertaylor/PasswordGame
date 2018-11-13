@@ -1,7 +1,16 @@
+$(document).on("click", ".returnHome", function() {
+    $("#registration").hide("slow");
+    $("#loggingIn").hide("slow");
+    $("#welcome").hide("slow");
+    $("#homePage").show("slow");
+    // or just use
+    //document.location.reload();
+});
+
 $(document).ready(function() {
 
-//transitions between the three main pages
-    $("#createUser").click(function() {
+    //transitions between the three main pages
+    $("#createUser").on("click", function() {
         $("#homePage").hide("slow");
         $("#registration").show("show");
     });
@@ -12,19 +21,16 @@ $(document).ready(function() {
 
     });
 
-    $(".returnHome").click(function() {
-        $("#registration").hide("slow");
-        $("#loggingIn").hide("slow");
-        $("#homePage").show("slow");
-    });
-    
-    
-//Login
+
+
+
+    //Login
     $("#submitLogIn").click(function() {
         $("#failure").empty();
         var username = $("#user1").val();
         var welcomeMsg = "<h3>Welcome " + username + "</h3>";
-        var hackedMsg = "<h3>The account " + username + " has been compromised.</h3>";
+        var hackedMsg = '<h3>The account ' + username + ' has been compromised.</h3>' +
+            '<button class="btn returnButton returnHome">Return</button>';
         var password = $("#pass1").val();
         if (!username) {
             alert("You're missing a username!");
@@ -48,27 +54,31 @@ $(document).ready(function() {
                     console.log("successfully sent data");
                     console.log(data);
                     if (data == "success") {
+                        $("#welcome").empty();
                         $("#welcome").append(welcomeMsg);
                         $("#loggingIn").hide("slow");
                         $("#welcome").show("slow");
                         $("#hackTime").load("crack.html")
                     }
                     else if (data == "hacked") {
+                        $("#welcome").empty();
                         $("#welcome").append(hackedMsg);
                         $("#loggingIn").hide("slow");
                         $("#welcome").show("slow");
+                        $("#user1").val("");
+                        $("#pass1").val("");
                     }
                     else if (data == "failure") {
                         $("#failure").html("Username or Password is Incorrect");
-                        var username = $("#user").val("");
-                        var password = $("#pass").val("");
+                        var username = $("#user1").val("");
+                        var password = $("#pass1").val("");
                     }
                 }
             });
         }
     });
 
-//registration
+    //registration
     $("#registerUser").click(function() {
         var username = $("#user").val();
         var password = $("#pass").val();
@@ -77,6 +87,10 @@ $(document).ready(function() {
         }
         else if (!password) {
             alert("You're missing a password!");
+        }
+        else if (password.length > 8) {
+            alert("i'm sorry, but your password is too secure. please keep your password under 8 characters.");
+            $("#pass").val("");
         }
         else {
             var someJSON = new Object();

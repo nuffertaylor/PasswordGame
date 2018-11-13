@@ -27,17 +27,20 @@ function userToHack(user) {
 function userHacked(user) {
     $("#hackedUserInfo").empty();
     $("#hackedUserInfo").append("<h4>The account " + user + " has already been compromised.</h4>" +
-        "<h5>Before they were compromised, they cracked [insert number here] accounts.</h5>");
+        "<h5><i>Before you were compromised, they cracked [insert number here] accounts.</i></h5>");
 }
 
 $(document).ready(function() {
 
     $.getJSON("/userList", function(data) {
         for (var i = 1; i < data.length; i++) {
-            if (data.hacked) {
-                var hackedUser = '<li class="nav-item" onclick = "userHacked(\'' + data[i].username + '\')><s style="color:red">' + data[i].username + '</s></li>'
+            if (data[i].hacked) {
+                var html = '<s style="color:red"><li class="nav-item" onclick = "userHacked(\'' + data[i].username + '\'")>' + data[i].username + '</li></s>';
                 $("#listOfUsers").append(html);
             }
+            //check so the user can't hack himself
+            else if (data[i].username == $("#whoYoureAttacking").val()) { console.log("this is the user who's hacking") }
+
             else {
                 var html = '<li class="nav-item" onclick = "userToHack(\'' + data[i].username + '\')">' + data[i].username + '</li>';
                 $("#listOfUsers").append(html);
@@ -45,7 +48,8 @@ $(document).ready(function() {
         }
     });
 
-    $("#submitPassword").click(function() {
+    $("#submitPassword").on("click", function() {
+        $("#wronginputText").empty();
         var pass = $("#passwordGuess").val();
         if (!pass) {
             $("#wronginputText").empty();
@@ -67,6 +71,11 @@ $(document).ready(function() {
                 console.log(data);
                 if (data.status == "success") {
                     console.log("you guessed the password, nice");
+                    $("#guessResponse").empty();
+                    for (var i = 0; i < data.right; i++) {
+                        var html = '<i class="fas fa-circle" style="color:green">';
+                        $("#guessResponse").append(html);
+                    }
                 }
                 else if (data.status == "wrong length") {
                     $("#wronginputText").empty();
