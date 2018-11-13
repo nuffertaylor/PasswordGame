@@ -258,6 +258,7 @@ router.get('/userList', function(req, res, next)
             var info = new Object();
             info.username = userList[i].username;
             info.hacked = userList[i].hacked;
+            info.usersHacked = userList[i].usersHacked;
             allUsers.push(info);
         }
         res.json(allUsers);
