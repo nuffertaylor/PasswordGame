@@ -155,7 +155,8 @@ router.post('/tryHack', function(req, res, next)
                         {
                             res.json(
                             {
-                                status: "wrong length"
+                                status: "wrong length",
+                                l : rightPassword.length
                             });
                         }
                         else if (tryPassword == rightPassword)

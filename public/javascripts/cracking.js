@@ -25,6 +25,22 @@ function userToHack(user) {
     });
 }
 
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
 function userHacked(user) {
     $("#hackedUserInfo").empty();
     $("#guessContainer").hide("slow");
@@ -97,9 +113,11 @@ $(document).ready(function() {
             return;
         }
         var user = $("#whoYoureAttacking").html();
+        var curUser = getCookie("username");
         var someJSON = new Object();
         someJSON.username = user;
         someJSON.password = pass;
+        someJSON.hackerUsername = curUser;
         var sendJSON = JSON.stringify(someJSON);
         $.ajax({
             url: "/tryHack",
@@ -112,6 +130,7 @@ $(document).ready(function() {
                     console.log("you guessed the password, nice");
                     $("#guessResponse").empty();
                     for (var i = 0; i < data.right; i++) {
+                        console.log("hello for the " + i + "nth time");
                         var html = '<i class="fas fa-circle" style="color:green">';
                         $("#guessResponse").append(html);
                     }
@@ -121,7 +140,7 @@ $(document).ready(function() {
                     console.log("password length is wrong");
                     console.log(data);
                     $("#wronginputText").html("password is not the right length (should be " + data.l + " characters)");
-                    
+
                 }
                 else {
                     $("#guessResponse").empty();

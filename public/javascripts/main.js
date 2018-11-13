@@ -7,6 +7,13 @@ $(document).on("click", ".returnHome", function() {
     //document.location.reload();
 });
 
+function setCookie(cname,cvalue,exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
 $(document).ready(function() {
 
     //transitions between the three main pages
@@ -20,9 +27,6 @@ $(document).ready(function() {
         $("#loggingIn").show("slow");
 
     });
-
-
-
 
     //Login
     $("#submitLogIn").click(function() {
@@ -59,6 +63,7 @@ $(document).ready(function() {
                         $("#loggingIn").hide("slow");
                         $("#welcome").show("slow");
                         $("#hackTime").load("crack.html")
+                        setCookie("username", someJSON.username, 2);
                     }
                     else if (data == "hacked") {
                         $("#welcome").empty();
