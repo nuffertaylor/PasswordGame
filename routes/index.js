@@ -123,6 +123,7 @@ router.post('/tryHack', function(req, res, next) {
                                                 else {
                                                     res.json({
                                                         status: "success",
+                                                        l: rightPassword.length
                                                     });
                                                 }
                                             });
