@@ -49,8 +49,8 @@ function userHacked(user) {
         "<h5><i>Before they were compromised, they cracked [insert number here] accounts.</i></h5>");
 }
 
-$(document).ready(function() {
-
+function loadBox() {
+    $("#listOfUsers").empty();
     $.getJSON("/userList", function(data) {
         for (var i = 1; i < data.length; i++) {
             if (data[i].hacked) {
@@ -101,8 +101,14 @@ $(document).ready(function() {
             }
         }
     });
+}
+
+$(document).ready(function() {
+
+    loadBox();
 
     $("#submitPassword").on("click", function() {
+        loadBox();
         $("#hackedUserInfo").empty();
         $("#wronginputText").empty();
         var pass = $("#passwordGuess").val();
@@ -129,7 +135,7 @@ $(document).ready(function() {
                 if (data.status == "success") {
                     console.log("you guessed the password, nice");
                     $("#guessResponse").empty();
-                    for (var i = 0; i < data.right; i++) {
+                    for (var i = 0; i < data.l; i++) {
                         console.log("hello for the " + i + "nth time");
                         var html = '<i class="fas fa-circle" style="color:green">';
                         $("#guessResponse").append(html);
