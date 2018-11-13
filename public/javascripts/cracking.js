@@ -45,7 +45,7 @@ function userHacked(user) {
     $("#hackedUserInfo").empty();
     $("#guessContainer").hide("slow");
     $("#hackedUserInfo").show("slow");
-    $("#hackedUserInfo").append("<h4>The account " + user + " has already been compromised.</h4>" +
+    $("#hackedUserInfo").append("<h4>The account " + user + " has been compromised.</h4>" +
         "<h5><i>Before they were compromised, they cracked [insert number here] accounts.</i></h5>");
 }
 
@@ -108,7 +108,6 @@ $(document).ready(function() {
     loadBox();
 
     $("#submitPassword").on("click", function() {
-        loadBox();
         $("#hackedUserInfo").empty();
         $("#wronginputText").empty();
         var pass = $("#passwordGuess").val();
@@ -135,11 +134,12 @@ $(document).ready(function() {
                 if (data.status == "success") {
                     console.log("you guessed the password, nice");
                     $("#guessResponse").empty();
-                    for (var i = 0; i < data.l; i++) {
-                        console.log("hello for the " + i + "nth time");
-                        var html = '<i class="fas fa-circle" style="color:green">';
-                        $("#guessResponse").append(html);
-                    }
+                    userHacked(user);
+                    /*for (var i = 0; i < data.l; i++) {
+                        
+                        //var html = '<i class="fas fa-circle" style="color:green">';
+                        //$("#guessResponse").append(html);
+                    }*/
                 }
                 else if (data.status == "wrong length") {
                     $("#wronginputText").empty();
@@ -163,6 +163,7 @@ $(document).ready(function() {
                         $("#guessResponse").append(html);
                     }
                 }
+                loadBox();
             }
         });
     });
