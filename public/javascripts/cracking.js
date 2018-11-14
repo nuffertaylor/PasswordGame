@@ -1,4 +1,3 @@
-//sort userlist by number of people hacked
 //label the table
 
 function userToHack(user) {
@@ -66,27 +65,32 @@ function userHacked(user) {
 
 function loadBox() {
     $("#listOfUsers").empty();
+    var theList;
     $.getJSON("/userList", function(data) {
-        for (var i = 1; i < data.length; i++) {
-            if (data[i].hacked) {
-                var html = '<li class = "hackedUser" onclick = "userHacked(\'' + data[i].username + '\')">' + data[i].username + '.....' + data[i].usersHacked + '</li>';
+        theList = data;
+        theList.shift();
+        theList.sort(function(a, b) { return b.usersHacked - a.usersHacked });
+        console.log(theList);
+        for (var i = 0; i < theList.length; i++) {
+            if (theList[i].hacked) {
+                var html = '<li class = "hackedUser" onclick = "userHacked(\'' + theList[i].username + '\')">' + theList[i].username + '.....' + theList[i].usersHacked + '</li>';
                 $("#listOfUsers").append(html);
             }
             //check so the user can't hack himself
-            else if (data[i].username == getCookie("username")) { console.log("this is the user who's hacking") }
+            else if (theList[i].username == getCookie("username")) { console.log("this is the user who's hacking") }
             else {
-                var html = '<li class = "unhackedUser" onclick = "userToHack(\'' + data[i].username + '\')">' + data[i].username + '.....' + data[i].usersHacked + '</li>';
+                var html = '<li class = "unhackedUser" onclick = "userToHack(\'' + theList[i].username + '\')">' + theList[i].username + '.....' + theList[i].usersHacked + '</li>';
                 $("#listOfUsers").append(html);
             }
         }
 
         //this piece of code alphabetizes the list
-
+        
         var list, i, switching, b, shouldSwitch;
         list = document.getElementById("listOfUsers");
         switching = true;
         /*Make a loop that will continue until
-        no switching has been done:*/
+        no switching has been done:
         while (switching) {
             //start by saying: no switching is done:
             switching = false;
@@ -95,23 +99,23 @@ function loadBox() {
             for (i = 0; i < (b.length - 1); i++) {
                 //start by saying there should be no switching:
                 shouldSwitch = false;
-                /*check if the next item should
-                switch place with the current item:*/
+                check if the next item should
+                switch place with the current item:
                 if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
-                    /*if next item is alphabetically
+                    if next item is alphabetically
                     lower than current item, mark as a switch
-                    and break the loop:*/
+                    and break the loop:
                     shouldSwitch = true;
                     break;
                 }
             }
             if (shouldSwitch) {
-                /*If a switch has been marked, make the switch
-                and mark the switch as done:*/
+                If a switch has been marked, make the switch
+                and mark the switch as done:
                 b[i].parentNode.insertBefore(b[i + 1], b[i]);
                 switching = true;
             }
-        }
+        }*/
     });
 }
 
