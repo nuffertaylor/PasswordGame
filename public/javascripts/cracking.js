@@ -21,7 +21,10 @@ function userToHack(user) {
         success: function(data) {
             console.log("this password has " + data + " characters.");
             for (var i = 0; i < data; i++) {
-                var html = '<i class="far fa-circle"></i>';
+
+                //change "far" to "fas" to make the circle solid white
+                var html = '<i class="far fa-circle" style="color:white"></i>';
+
                 $("#guessResponse").append(html);
             }
         }
@@ -48,8 +51,17 @@ function userHacked(user) {
     $("#hackedUserInfo").empty();
     $("#guessContainer").hide("slow");
     $("#hackedUserInfo").show("slow");
-    $("#hackedUserInfo").append("<h4>The account " + user + " has been compromised.</h4>" +
-        "<h5><i>Before they were compromised, they cracked [insert number here] accounts.</i></h5>");
+    $.getJSON("/userList", function(data) {
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].username == user) {
+                var numOfHacked = data[i].usersHacked;
+                $("#hackedUserInfo").append("<div class='info'><h4>The account " + user + " has been compromised.</h4>" +
+                    "<h5><i>Before they were compromised, they cracked " + numOfHacked + " accounts.</i></h5></div>");
+                break;
+            }
+        }
+    });
+
 }
 
 function loadBox() {
@@ -57,15 +69,13 @@ function loadBox() {
     $.getJSON("/userList", function(data) {
         for (var i = 1; i < data.length; i++) {
             if (data[i].hacked) {
-                var html = '<li style="text-decoration: line-through; color:red;" onclick = "userHacked(\'' + data[i].username + '\')">' + data[i].username + '.....' + data[i].usersHacked + '</li>';
-
+                var html = '<li class = "hackedUser" onclick = "userHacked(\'' + data[i].username + '\')">' + data[i].username + '.....' + data[i].usersHacked + '</li>';
                 $("#listOfUsers").append(html);
             }
             //check so the user can't hack himself
             else if (data[i].username == getCookie("username")) { console.log("this is the user who's hacking") }
-
             else {
-                var html = '<li onclick = "userToHack(\'' + data[i].username + '\')">' + data[i].username + '.....' + data[i].usersHacked + '</li>';
+                var html = '<li class = "unhackedUser" onclick = "userToHack(\'' + data[i].username + '\')">' + data[i].username + '.....' + data[i].usersHacked + '</li>';
                 $("#listOfUsers").append(html);
             }
         }
@@ -147,7 +157,7 @@ $(document).ready(function() {
                     $("#wronginputText").empty();
                     console.log("password length is wrong");
                     console.log(data);
-                    $("#wronginputText").html("password is not the right length (should be " + data.l + " characters)");
+                    $("#wronginputText").html("PIN is not the right length (should be " + data.l + " characters)");
 
                 }
                 else {
@@ -161,7 +171,7 @@ $(document).ready(function() {
                         $("#guessResponse").append(html);
                     }
                     for (var i = 0; i < data.wrong; i++) {
-                        var html = '<i class="far fa-circle"></i>';
+                        var html = '<i class="far fa-circle style="color:white"></i>';
                         $("#guessResponse").append(html);
                     }
                 }

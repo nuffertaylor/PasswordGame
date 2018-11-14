@@ -1,6 +1,3 @@
-//numeric passwords only
-//change to "PIN"
-
 $(document).on("click", ".returnHome", function() {
     $("#registration").hide("slow");
     $("#loggingIn").hide("slow");
@@ -10,9 +7,9 @@ $(document).on("click", ".returnHome", function() {
     //document.location.reload();
 });
 
-function setCookie(cname,cvalue,exdays) {
+function setCookie(cname, cvalue, exdays) {
     var d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
     var expires = "expires=" + d.toGMTString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
@@ -43,7 +40,7 @@ $(document).ready(function() {
             alert("You're missing a username!");
         }
         else if (!password) {
-            alert("You're missing a password!");
+            alert("You're missing a PIN!");
         }
         else {
             var someJSON = new Object();
@@ -94,12 +91,20 @@ $(document).ready(function() {
             alert("You're missing a username!");
         }
         else if (!password) {
-            alert("You're missing a password!");
+            alert("You're missing a PIN!");
         }
+        else if (isNaN(password)) {
+            alert("i'm sorry, but you can't put anything other than numbers in your PIN.")
+            $("#pass").val("");
+        }
+        else if (password.length > 4 || password.length < 4){
+            alert("sorry, please keep your PIN to 4 characters.")
+        }
+        /* no longer needed as we're only doing PINS
         else if (password.length > 8) {
             alert("i'm sorry, but your password is too secure. please keep your password under 8 characters.");
             $("#pass").val("");
-        }
+        }*/
         else {
             var someJSON = new Object();
             someJSON.username = username;

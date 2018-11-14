@@ -5,6 +5,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  color: white;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -30,12 +31,23 @@ a {
 
 .title {
   font-family: streamster;
-  color: purple;
+  color: #E88FB4;
 }
 
 .info {
   font-family: encounter;
-  color: #990095;
+  color: #E88FB4;
+}
+
+.hackedUser {
+  font-family: vcr;
+  text-decoration: line-through;
+  color: red;
+}
+
+.unhackedUser {
+  font-family: vcr;
+  color: #E88FB4;
 }
 
 .purpleButton {
@@ -56,6 +68,10 @@ a {
 
 .returnButton:hover {
   background-color: #58258e;
+}
+
+h3 {
+  color: white;
 }
 
 .scrollbar {}
