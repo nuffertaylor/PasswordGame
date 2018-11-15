@@ -8,40 +8,51 @@
 </header>
 
 <body>
-    <!-- Creates a scrolling box of all the users we have stored on the server -->
-    <table id="listOfUsers" class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">Rank</th>
-                <th scope="col">Username</th>
-                <th scope="col">Number Hacked</th>
-            </tr>
-        </thead>
-        <tbody>
-    </table>
-    <div id="hackedUserInfo"></div>
-    <div style="display : none;" id="guessContainer">
-        <nobr>
-            <h3 class="info">You are hacking </h3>
-            <h3 id="whoYoureAttacking" class="info"></h3>
-        </nobr>
-        <div id="guessForm" class="form-group">
-            <form action="">
-                <label for="name" class = "unhackedUser">PIN: </label><br>
-                <input type="text" id="passwordGuess" placeholder="PIN">
-                <p style="color:red" id="wronginputText"></p>
-            </form>
-            <button id="submitPassword" class="btn purpleButton">Submit</button>
-        </div>
-        <div id="leaderboard"></div>
-        <div id="guessResponse"></div>
-        <div class="unhackedUser" id="responseKey">
-            <br><i class="far fa-circle" style="color:white"></i>
-            <p>unidentified character</p><br>
-            <i class="fas fa-circle" style="color:red"></i>
-            <p>correct character</p><br>
-            <i class="fas fa-circle" style="color:green"></i>
-            <p>correct character and correct location</p><br>
+    <div class="containter">
+        <div class="row">
+
+            <!-- TODO limit box size and add a scroll bar -->
+            <div class="col-8">
+                <table id="listOfUsers" class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Rank</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Number Hacked</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                </table>
+            </div>
+            <!-- not sure why huge space is inserted between this new col and the previous one -->
+            <div class="col">
+                <div id="hackedUserInfo"></div>
+                <div style="display : none;" id="guessContainer">
+                    <nobr>
+                        <h3 class="info">You are hacking </h3>
+                        <h3 id="whoYoureAttacking" class="info" style="text-align:center;"></h3>
+                    </nobr>
+                    <div id="guessForm" class="form-group">
+                        <form action="">
+                            <label for="name" class="unhackedUser">PIN: </label><br>
+                            <input type="text" id="passwordGuess" placeholder="PIN">
+                            <p style="color:red" id="wronginputText"></p>
+                        </form>
+                        <button id="submitPassword" class="btn purpleButton">Submit</button>
+                    </div>
+                    <div id="leaderboard"></div>
+                    <div id="guessResponse"></div>
+                    <div class="unhackedUser" id="responseKey">
+                        <br><i class="far fa-circle" style="color:white"></i>
+                        <p>unidentified character</p><br>
+                        <i class="fas fa-circle" style="color:red"></i>
+                        <p>correct character</p><br>
+                        <i class="fas fa-circle" style="color:green"></i>
+                        <p>correct character and correct location</p><br>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </body>
