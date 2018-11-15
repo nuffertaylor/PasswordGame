@@ -177,7 +177,7 @@ $(document).ready(function() {
                         $("#guessResponse").append(html);
                     }
                     for (var i = 0; i < data.wrong; i++) {
-                        var html = '<i class="far fa-circle style="color:white"></i>';
+                        var html = '<i class="far fa-circle" style="color:white"></i>';
                         $("#guessResponse").append(html);
                     }
                 }
