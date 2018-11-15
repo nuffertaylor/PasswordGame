@@ -98,6 +98,37 @@ router.post('/login', function(req, res, next)
         });
 });
 
+router.post('/checkHack', function(req, res, next)
+{
+    User.find({ username: req.body.username},
+
+        function(err, userList)
+        { //Calls the find() method on your database
+            if (err) return console.error(err); //If there's an error, print it out
+            else
+            {
+                if (userList.length)
+                {
+
+                    if (userList[0].hacked == true)
+                    {
+                        res.json("hacked");
+                    }
+                    else
+                    {
+                        res.json("not hacked");
+                    }
+
+                }
+                else
+                {
+                    res.json("does not exist");
+                }
+            }
+        });
+});
+
+
 router.post('/tryHack', function(req, res, next)
 {
     //TODO add users username to check if they are hacked
@@ -152,7 +183,7 @@ router.post('/tryHack', function(req, res, next)
                                                 if (err) return console.error(err); //If there's an error, print it out
                                                 else
                                                 {
-                                                    User.updateOne({ username: req.body.hackerUsername }, { $inc: {'usersHacked' : 1} }, function(err)
+                                                    User.updateOne({ username: req.body.hackerUsername }, { $inc: { 'usersHacked': 1 } }, function(err)
                                                     {
                                                         if (err) return console.error(err); //If there's an error, print it out
                                                         else
@@ -253,6 +284,12 @@ router.get('/userList', function(req, res, next)
     User.find({}, function(err, userList)
     {
         var allUsers = [];
+        console.log(userList);
+        var infos = new Object();
+        infos.username = "space";
+        infos.hacked = true;
+        infos.usersHacked = 0;
+        allUsers.push(infos);
         for (var i = 0; i < userList.length; i++)
         {
             var info = new Object();
@@ -261,6 +298,7 @@ router.get('/userList', function(req, res, next)
             info.usersHacked = userList[i].usersHacked;
             allUsers.push(info);
         }
+        console.log(allUsers);
         res.json(allUsers);
     });
 });

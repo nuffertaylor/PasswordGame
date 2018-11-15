@@ -56,6 +56,11 @@ a {
   color: #70DDF8;
 }
 
+.thisUser {
+  font-family: vcr;
+  color: lightgreen;
+}
+
 .loginCSS {
   font-family:  vcr;
   color : #E88FB4;

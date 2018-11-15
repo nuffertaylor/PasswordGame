@@ -15,6 +15,7 @@ $(document).ready(function()
         {
             alert("You're missing a password!");
         }
+        
         else
         {
             var someJSON = new Object();
