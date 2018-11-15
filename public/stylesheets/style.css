@@ -51,6 +51,11 @@ a {
   color: #70DDF8;
 }
 
+.loginCSS {
+  font-family:  vcr;
+  color : #E88FB4;
+}
+
 .purpleButton {
   background-color: #F103DE;
   color: white;
