@@ -1,86 +1,91 @@
 /*change everything*/
 
 body {
-  background-image: url("https://i.pinimg.com/originals/8b/6a/51/8b6a51fa1063895d555d28a4c3e17a33.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  color: white;
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-image: url("https://i.pinimg.com/originals/8b/6a/51/8b6a51fa1063895d555d28a4c3e17a33.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+    color: #00B7FF;
+}
+
+.normalText {
+    font-family: streamster;
+    color: #E88FB4;
 }
 
 @font-face {
-  font-family: streamster;
-  src: url('../fonts/Streamster.ttf') format('truetype');
+    font-family: streamster;
+    src: url('../fonts/Streamster.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: vcr;
-  src: url('../fonts/VCR.ttf') format('truetype');
+    font-family: vcr;
+    src: url('../fonts/VCR.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: encounter;
-  src: url('../fonts/encounter.ttf') format('truetype');
+    font-family: encounter;
+    src: url('../fonts/encounter.ttf') format('truetype');
 }
 
 .title {
-  font-family: streamster;
-  color: #E88FB4;
+    font-family: streamster;
+    color: #E88FB4;
 }
 
 .info {
-  font-family: encounter;
-  color: #E88FB4;
+    font-family: encounter;
+    color: #E88FB4;
 }
 
 .hackedUser {
-  font-family: vcr;
-  text-decoration: line-through;
-  color: red;
+    font-family: vcr;
+    text-decoration: line-through;
+    color: red;
 }
 
 .unhackedUser {
-  font-family: vcr;
-  color: #E88FB4;
+    font-family: vcr;
+    color: #E88FB4;
 }
 
 .purpleButton {
-  background-color: #F103DE;
-  color: white;
-  font-family: vcr;
+    background-color: #F103DE;
+    color: white;
+    font-family: vcr;
 }
 
 .purpleButton:hover {
-  background-color: #BF05B3;
+    background-color: #BF05B3;
 }
 
 .returnButton {
-  background-color: #371759;
-  color: white;
-  font-family: vcr;
+    background-color: #371759;
+    color: white;
+    font-family: vcr;
 }
 
 .returnButton:hover {
-  background-color: #58258e;
+    background-color: #58258e;
 }
 
 h3 {
-  color: white;
+    color: white;
 }
 
 .scrollbar {}
 
 #userScroll {
-  width: 400px;
-  height: 150px;
-  line-height: 3em;
-  overflow: scroll;
-  padding: 5px;
-  outline: #D3D3D3 solid 10px;
+    width: 400px;
+    height: 150px;
+    line-height: 3em;
+    overflow: scroll;
+    padding: 5px;
+    outline: #D3D3D3 solid 10px;
 }
