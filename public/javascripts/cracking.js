@@ -65,6 +65,7 @@ function userHacked(user) {
 
 function loadBox() {
     $("#listOfUsers").empty();
+    $("#listOfUsers").append('<thead class = "thead-dark"> <tr> <th scope="col">Rank</th> <th scope="col">Username</th> <th scope="col">Number Hacked</th> </tr> </thead>');
     var theList;
     $.getJSON("/userList", function(data) {
         theList = data;
@@ -73,14 +74,15 @@ function loadBox() {
         console.log(theList);
         for (var i = 0; i < theList.length; i++) {
             if (theList[i].hacked) {
-                var html = '<li class = "hackedUser" onclick = "userHacked(\'' + theList[i].username + '\')">' + theList[i].username + '.....' + theList[i].usersHacked + '</li>';
+                var html = '<tr><th scope="row">' + i + '</th><td class = "hackedUser" onclick = "userHacked(\'' + theList[i].username + '\')">' + theList[i].username + '</td><td>' + theList[i].usersHacked + '</td></tr>';
                 $("#listOfUsers").append(html);
             }
             //check so the user can't hack himself
             else if (theList[i].username == getCookie("username")) { console.log("this is the user who's hacking") }
             else {
-                var html = '<li class = "unhackedUser" onclick = "userToHack(\'' + theList[i].username + '\')">' + theList[i].username + '.....' + theList[i].usersHacked + '</li>';
+                var html = '<tr><th scope="row">' + i + '</th><td class = "unhackedUser" onclick = "userToHack(\'' + theList[i].username + '\')">' + theList[i].username + '</td><td>' + theList[i].usersHacked + '</td></tr>';
                 $("#listOfUsers").append(html);
+                $("#listOfUsers").append("</tbody>");
             }
         }
 
@@ -175,7 +177,7 @@ $(document).ready(function() {
                         $("#guessResponse").append(html);
                     }
                     for (var i = 0; i < data.wrong; i++) {
-                        var html = '<i class="far fa-circle style="color:white"></i>';
+                        var html = '<i class="far fa-circle" style="color:white"></i>';
                         $("#guessResponse").append(html);
                     }
                 }

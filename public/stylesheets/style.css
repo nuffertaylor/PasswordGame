@@ -1,4 +1,5 @@
-/*change everything*/
+/*change everything
+https://media.giphy.com/media/nRd9i2a6g3bxK/giphy.gif*/
 
 body {
     background-image: url("https://i.pinimg.com/originals/8b/6a/51/8b6a51fa1063895d555d28a4c3e17a33.jpg");
@@ -51,8 +52,13 @@ a {
 }
 
 .unhackedUser {
-    font-family: vcr;
-    color: #E88FB4;
+  font-family: vcr;
+  color: #70DDF8;
+}
+
+.loginCSS {
+  font-family:  vcr;
+  color : #E88FB4;
 }
 
 .purpleButton {
@@ -79,13 +85,17 @@ h3 {
     color: white;
 }
 
-.scrollbar {}
+#listOfUsers {
+  width: 40%;
+  height: 100%;
+  line-height: 3em;
+  overflow: scroll;
+  outline: #D3D3D3 solid 10px;
+}
 
-#userScroll {
-    width: 400px;
-    height: 150px;
-    line-height: 3em;
-    overflow: scroll;
-    padding: 5px;
-    outline: #D3D3D3 solid 10px;
+table {
+  table-layout: fixed;
+  width: 100%;
+  word-break: break-word;
+  color: #70DDF8;
 }
