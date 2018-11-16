@@ -8,48 +8,86 @@
 </header>
 
 <body>
-    <div class="containter">
+    <div class="container-fluid">
         <div class="row">
-
             <!-- TODO limit box size and add a scroll bar -->
-            <div class="col-8">
-                <table id="listOfUsers" class="table">
-                    <thead class="thead-dark">
+            <div class="col-sm">
+
+                <table id="listOfUsers" class="table table-dark w-100 d-block d-md-table">
+                    <thead>
                         <tr>
                             <th scope="col">Rank</th>
                             <th scope="col">Username</th>
                             <th scope="col">Number Hacked</th>
                         </tr>
                     </thead>
-                    <tbody>
                 </table>
             </div>
             <!-- not sure why huge space is inserted between this new col and the previous one -->
-            <div class="col">
-                <div id="hackedUserInfo"></div>
+            <div class="col-sm">
+                <div id="hackedUserInfo">
+                </div>
                 <div style="display : none;" id="guessContainer">
                     <nobr>
-                        <h3 class="info">You are hacking </h3>
+                        <h3 class="info" style="text-align:center;">You are hacking </h3>
                         <h3 id="whoYoureAttacking" class="info" style="text-align:center;"></h3>
                     </nobr>
-                    <div id="guessForm" class="form-group">
-                        <form action="">
-                            <label for="name" class="unhackedUser">PIN: </label><br>
-                            <input type="text" id="passwordGuess" placeholder="PIN">
-                            <p style="color:red" id="wronginputText"></p>
-                        </form>
-                        <button id="submitPassword" class="btn purpleButton">Submit</button>
+                    <div class="card bg-dark" style="">
+                        <div class="card-body">
+                            <div id="guessForm" class="form-group">
+                                <form action="">
+                                    <label for="name" class="unhackedUser">PIN: </label><br>
+                                    <input type="text" id="passwordGuess" placeholder="PIN">
+                                    <p style="color:red" id="wronginputText"></p>
+                                </form>
+                                <button id="submitPassword" class="btn purpleButton">Submit</button>
+                                <br>
+                                <div id="guessResponse" class="my-2"></div>
+                            </div>
+                        </div>
                     </div>
+                    <br>
                     <div id="leaderboard"></div>
-                    <div id="guessResponse"></div>
-                    <div class="unhackedUser" id="responseKey">
-                        <br><i class="far fa-circle" style="color:white"></i>
-                        <p>unidentified character</p><br>
-                        <i class="fas fa-circle" style="color:red"></i>
-                        <p>correct character</p><br>
-                        <i class="fas fa-circle" style="color:green"></i>
-                        <p>correct character and correct location</p><br>
-                    </div>
+
+                    <span class="unhackedUser" id="responseKey">
+                        <div class="card" style="">
+                            <div class="card-body bg-dark">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row"><i class="far fa-circle float-right" style="color:white"></th>
+                                            <td><p>unidentified character</p></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"><i class="fas fa-circle float-right" style="color:red"></i></th>
+                                            <td>
+                                                <p>correct character</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"><i class="fas fa-circle float-right" style="color:green"></i></th>
+                                            <td>
+                                                <p>correct character and correct location</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+    
+    
+    
+    
+                            <!--<br><i class="far fa-circle float-right" style="color:white"></i>-->
+                            <!--<p class="float-right">unidentified character</p><br>-->
+                            
+                            <!--<i class="fas fa-circle float-right" style="color:red"></i>-->
+                            <!--<p class="float-right">correct character</p><br>-->
+                            
+                            <!--<i class="fas fa-circle float-right" style="color:green"></i>-->
+                            <!--<p class="float-right">correct character and correct location</p><br>-->
+                            </div>
+                        </div>
+                    </span>
+
                 </div>
 
             </div>

@@ -58,7 +58,7 @@ $(document).ready(function()
     {
         $("#failure").empty();
         var username = $("#user1").val();
-        var welcomeMsg = "<h3>Welcome " + username + "</h3>";
+        var welcomeMsg = "<h3>Welcome " + username + ". Select a username to begin hacking." + "</h3>";
         var hackedMsg = '<h3>The account ' + username + ' has been compromised.</h3>' +
             '<button class="btn returnButton returnHome">Return</button>';
         var password = $("#pass1").val();

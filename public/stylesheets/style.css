@@ -1,14 +1,20 @@
 /*change everything
 https://media.giphy.com/media/nRd9i2a6g3bxK/giphy.gif*/
 
-body {
+body,html {
+    color: white;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    height: 100%;
+    margin: 0;
+}
+
+.bg {
     background-image: url("https://i.pinimg.com/originals/8b/6a/51/8b6a51fa1063895d555d28a4c3e17a33.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    color: white;
-    padding: 50px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    
+    height: 100%;
 }
 
 a {

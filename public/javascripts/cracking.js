@@ -108,7 +108,17 @@ function thisUserHacked(user)
 function loadBox()
 {
     $("#listOfUsers").empty();
-    $("#listOfUsers").append('<thead class = "thead-dark"> <tr> <th scope="col">Rank</th> <th scope="col">Username</th> <th scope="col">Number Hacked</th> </tr> </thead>');
+    $("#listOfUsers").append('<thead>' +
+        '    <tr>' +
+        '        <th scope="col">Rank</th>' +
+        '        <th scope="col">Username</th>' +
+        '        <th scope="col">Number Hacked</th>' +
+        '    </tr>' +
+        '</thead>');
+
+
+
+
     var theList;
     $.getJSON("/userList", function(data)
     {
@@ -124,24 +134,25 @@ function loadBox()
         console.log(theList);
         for (var i = 0; i < theList.length; i++)
         {
+            $("#listOfUsers").append("<tbody>");
             console.log("loadbox: " + getCookie("username"));
             if (theList[i].hacked)
             {
                 var html = '<tr><th scope="row">' + i + '</th><td class = "hackedUser" onclick = "userHacked(\'' + theList[i].username + '\')">' + theList[i].username + '</td><td>' + theList[i].usersHacked + '</td></tr>';
                 $("#listOfUsers").append(html);
             }
-            else if (theList[i].username == getCookie("username")) 
-            { 
+            else if (theList[i].username == getCookie("username"))
+            {
                 var html = '<tr><th scope="row">' + i + '</th><td class = "thisUser" onclick = "userToHack(\'' + theList[i].username + '\')">' + theList[i].username + " (you)" + '</td><td>' + theList[i].usersHacked + '</td></tr>';
                 $("#listOfUsers").append(html);
             }
-            else 
+            else
             {
                 var html = '<tr><th scope="row">' + i + '</th><td class = "unhackedUser" onclick = "userToHack(\'' + theList[i].username + '\')">' + theList[i].username + '</td><td>' + theList[i].usersHacked + '</td></tr>';
                 $("#listOfUsers").append(html);
-                
+
             }
-            //$("#listOfUsers").append("</tbody>");
+            $("#listOfUsers").append("</tbody>");
         }
 
         //this piece of code alphabetizes the list
