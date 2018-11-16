@@ -105,6 +105,8 @@ function thisUserHacked(user)
 
 }
 
+
+
 function loadBox()
 {
     $("#listOfUsers").empty();
@@ -115,9 +117,6 @@ function loadBox()
         '        <th scope="col">Number Hacked</th>' +
         '    </tr>' +
         '</thead>');
-
-
-
 
     var theList;
     $.getJSON("/userList", function(data)
@@ -194,6 +193,14 @@ $(document).ready(function()
 {
 
     loadBox();
+    $()
+    
+    
+    $("#passGuessForm").submit( function(event) {
+        event.preventDefault();
+        document.getElementById("submitPassword").click();
+        return false;
+    });
 
     $("#submitPassword").on("click", function()
     {

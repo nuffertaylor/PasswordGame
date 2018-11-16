@@ -13,7 +13,7 @@
             <!-- TODO limit box size and add a scroll bar -->
             <div class="col-sm">
 
-                <table id="listOfUsers" class="table table-dark w-100 d-block d-md-table">
+                <table id="listOfUsers" class="table table-dark w-100 d-block d-md-table my-4">
                     <thead>
                         <tr>
                             <th scope="col">Rank</th>
@@ -35,7 +35,7 @@
                     <div class="card bg-dark" style="">
                         <div class="card-body">
                             <div id="guessForm" class="form-group">
-                                <form action="">
+                                <form id="passGuessForm">
                                     <label for="name" class="unhackedUser">PIN: </label><br>
                                     <input type="text" id="passwordGuess" placeholder="PIN">
                                     <p style="color:red" id="wronginputText"></p>
@@ -55,17 +55,17 @@
                                 <table class="table">
                                     <tbody>
                                         <tr>
-                                            <th scope="row"><i class="far fa-circle float-right" style="color:white"></th>
+                                            <th style="width:10%" scope="row"><i class="far fa-circle float-right" style="color:white"></th>
                                             <td><p>unidentified character</p></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row"><i class="fas fa-circle float-right" style="color:red"></i></th>
+                                            <th style="width:10%" scope="row"><i class="fas fa-circle float-right" style="color:red"></i></th>
                                             <td>
                                                 <p>correct character</p>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th scope="row"><i class="fas fa-circle float-right" style="color:green"></i></th>
+                                            <th style="width:10%" scope="row"><i class="fas fa-circle float-right" style="color:green"></i></th>
                                             <td>
                                                 <p>correct character and correct location</p>
                                             </td>

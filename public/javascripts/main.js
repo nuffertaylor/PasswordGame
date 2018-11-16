@@ -52,13 +52,25 @@ $(document).ready(function()
         $("#loggingIn").show("slow");
 
     });
+    
+    $("#registrationForm").submit( function(event) {
+        event.preventDefault();
+        //document.getElementById("registerUser").click();
+        return false;
+    });
+    
+    $("#loginForm").submit( function(event) {
+        event.preventDefault();
+        //document.getElementById("submitLogIn").click();
+        return false;
+    });
 
     //Login
     $("#submitLogIn").click(function()
     {
         $("#failure").empty();
         var username = $("#user1").val();
-        var welcomeMsg = "<h3>Welcome " + username + ". Select a username to begin hacking." + "</h3>";
+        var welcomeMsg = "<h3 class=\"my-2 title\">Welcome " + username + ". Select a username to begin hacking." + "</h3>";
         var hackedMsg = '<h3>The account ' + username + ' has been compromised.</h3>' +
             '<button class="btn returnButton returnHome">Return</button>';
         var password = $("#pass1").val();
@@ -201,15 +213,6 @@ $(document).ready(function()
 
                 }
             });
-
-
-
-
-
-
-
-
-
         }
     });
 
@@ -231,9 +234,9 @@ $(document).ready(function()
             alert("i'm sorry, but you can't put anything other than numbers in your PIN.");
             $("#pass").val("");
         }
-        else if (password.length > 4 || password.length < 4)
+        else if (password.length > 6 || password.length < 6)
         {
-            alert("sorry, please keep your PIN to 4 characters.");
+            alert("sorry, please keep your PIN to 6 characters.");
         }
 
         var testJSON = new Object();

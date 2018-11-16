@@ -25,34 +25,39 @@
                     <h1 class="title">Hackerman</h1>
                     <button id="createUser" class="btn returnButton">Create User</button>
                     <button id="logIn" class="purpleButton btn">Log In</button>
+                    <p class="unhackedUser my-4" style="color: #E88FB4; background-color: #000000aa">Welcome to Hackerman™. To play, please register and then login. Your objective is to hack the other user's pin numbers to increase your hacker rep. We have given you some high tech Hackertools™ to use when you login to help you determine your target's pin number. But beware, when you are hacked, it's game over for you... at least until you create another user.</p>
                 </div>
                 <div id="registration" style="display : none;">
                     <h2 class="title">Register a New User</h2>
                     <div class="form-group">
-                        <form action="">
+                        <form action=""  id="registrationForm">
                             <label for="name" class="loginCSS">Username: </label><br>
-                            <input type="text" id="user" placeholder="username"></form>
+                            <input type="text" id="user" placeholder="username"><br>
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                            <label for="comment" class="loginCSS my-2">PIN: </label><br>
+                            <input type="password" id="pass" placeholder="PIN"><br>
+                            <button class="btn purpleButton my-2" id="registerUser">Create New User</button>
+                        </form>
+                        <button class="btn returnButton returnHome my-2">Return</button>
                     </div>
-                    <div class="form-group">
-                        <label for="comment" class="loginCSS">PIN: </label><br>
-                        <input type="password" id="pass" placeholder="PIN">
-                    </div>
-                    <button class="btn purpleButton" id="registerUser">Create New User</button>
-                    <button class="btn returnButton returnHome">Return</button>
+
                 </div>
                 <div id="loggingIn" style="display : none;">
                     <h2 class="title">Log In</h2>
                     <div class="form-group">
-                        <form action="">
+                        <form action=""  id="loginForm">
                             <label for="name" class="loginCSS">Username: </label><br>
-                            <input type="text" id="user1" placeholder="username"></form>
+                            <input type="text" id="user1" placeholder="username"><br>
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                            <label for="comment" class="loginCSS my-2">PIN: </label><br>
+                            <input type="password" id="pass1" placeholder="PIN"><br>
+                            <button class="btn purpleButton my-2" id="submitLogIn">Log In</button>
+                        </form>
+                        <button class="btn returnButton returnHome my-2">Return</button>
                     </div>
-                    <div class="form-group">
-                        <label for="comment" class="loginCSS">PIN: </label><br>
-                        <input type="password" id="pass1" placeholder="PIN">
-                    </div>
-                    <button class="btn purpleButton" id="submitLogIn">Log In</button>
-                    <button class="btn returnButton returnHome">Return</button>
+
                     <p id="failure" style="color:red;font-style: italic;"></p>
                 </div>
                 <div class="title" id="welcome" style="display : none;"></div>
